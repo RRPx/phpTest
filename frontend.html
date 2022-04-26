@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Practice</title>
+  </head>
+  <body>
+    <!-- <a href="read.php">Click to see Data Initially</a> -->
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>Project name</th>
+        <th>Target amount</th>
+        <th>Collected amount</th>
+        <th><button>Donate</button></th>
+      </thead>
+      <tr>
+        <td>1</td>
+        <td>NEWMARKET-01</td>
+        <td>10000</td>
+        <td>500</td>
+        <th><button id="d1">Donate</button></th>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>RANGPUR-02</td>
+        <td>10000</td>
+        <td>500</td>
+        <th><button id="d2">Donate</button></th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>COMILLA-05</td>
+        <td>10000</td>
+        <td>500</td>
+        <th><button id="d3">Donate</button></th>
+      </tr>
+    </table>
+    <button id="getData">Get Data</button>
+    <script>
+      // -------------------------
+      document.querySelector("#getData").addEventListener("click", () => {
+        let id = prompt("Please enter a id")
+        document.getElementById("msgHolder").innerHTML = "Loading..."
+        // http://localhost/week6/backend2.php?id=${id}
+        fetch(`http://localhost/week6/backend2.php?id=${id}`)
+          .then((response) => response.json())
+          .then((result) => {
+            // document.getElementById("msgHolder").innerHTML = result.status
+            document.querySelector("#msgHolder").innerHTML = JSON.stringify(
+              result.content[0].COLLECTED_AMOUNT
+            )
+          })
+      })
+
+      // function renderList() {
+      //   for (let i = 0; i < result.content.length; i++) {
+      //     JSON.stringify(
+      //       `${result.content[i].FIRST_NAME} ${result.content[i].LAST_NAME}`
+      //     )
+      //   }
+      // }
+    </script>
+  </body>
+</html>

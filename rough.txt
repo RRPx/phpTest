@@ -3,4 +3,8 @@ to get discount!
 You got it Max.
 gotta change again.
 gotta change again 2
+<<<<<<< HEAD
 gotta change again 3 - main2
+=======
+gotta change again 3
+>>>>>>> main
